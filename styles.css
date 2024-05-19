@@ -1,0 +1,105 @@
+/* Resetting default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: blanchedalmond;
+}
+
+/* Container styles */
+#todo-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+/* Heading styles */
+h1 {
+    text-align: center;
+    color: gray;
+    margin-bottom: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: darkgray;
+    margin-bottom: 10px;
+}
+
+/* Input field styles */
+#task-input {
+    width: calc(100% - 80px);
+    padding: 10px;
+    border: 1px solid lightgreen;
+}
+
+/* Button styles */
+#add-task-btn {
+    width: 80px;
+    padding: 10px;
+    border: none;
+    background-color: blueviolet;
+    color: white;
+    cursor: pointer;
+}
+
+#add-task-btn:hover {
+    background-color: greenyellow;
+}
+
+/* Task columns styles */
+#task-columns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#in-progress-tasks, #completed-tasks {
+    width: 48%;
+}
+
+#task-list, #completed-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    background-color: pink;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.task-container {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-checkbox {
+    margin-right: 10px;
+}
+
+.task-item.completed {
+    background-color: lightgreen;
+}
+
+.task-item.completed p {
+    color: gray;
+    text-decoration: line-through;
+}
+
+/* Button styles within task item */
+.edit-btn, .remove-btn {
+    margin-left: 5px;
+}
