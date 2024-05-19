@@ -16,6 +16,11 @@ function addTask() {
         const taskContainer = document.createElement("div");
         taskContainer.classList.add("task-container");
 
+        // Create a checkbox for the task
+        const taskCheckbox = document.createElement("input");
+        taskCheckbox.type = "checkbox";
+        taskCheckbox.classList.add("task-checkbox");
+
         // Create a paragraph to hold the task text
         const taskParagraph = document.createElement("p");
         taskParagraph.textContent = taskText;
@@ -40,7 +45,7 @@ function addTask() {
             // Create an input field with the current task text
             const editInput = document.createElement("input");
             editInput.type = "text";
-            editInput.value = taskText;
+            editInput.value = taskParagraph.textContent; // Get the current text of the task
             editInput.classList.add("edit-input");
 
             // Create an "OK" button to save the edited task
@@ -62,11 +67,26 @@ function addTask() {
             taskContainer.insertBefore(okButton, editButton);
         }
 
+        // Function to toggle task completion
+        function toggleTaskCompletion() {
+            if (taskCheckbox.checked) {
+                listItem.classList.add("completed");
+                document.getElementById("completed-list").appendChild(listItem);
+            } else {
+                listItem.classList.remove("completed");
+                document.getElementById("task-list").appendChild(listItem);
+            }
+        }
+
         // Add event listeners to the "Edit" and "Remove" buttons
         editButton.addEventListener("click", editTask);
         removeButton.addEventListener("click", removeTask);
 
-        // Append the task text and buttons to the task container
+        // Add event listener to the checkbox
+        taskCheckbox.addEventListener("change", toggleTaskCompletion);
+
+        // Append the checkbox, task text, and buttons to the task container
+        taskContainer.appendChild(taskCheckbox);
         taskContainer.appendChild(taskParagraph);
         taskContainer.appendChild(editButton);
         taskContainer.appendChild(removeButton);
@@ -74,7 +94,7 @@ function addTask() {
         // Append the task container to the list item
         listItem.appendChild(taskContainer);
 
-        // Append the list item to the task list
+        // Append the list item to the "In Progress" task list
         const taskList = document.getElementById("task-list");
         taskList.appendChild(listItem);
 
